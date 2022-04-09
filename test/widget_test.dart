@@ -208,44 +208,44 @@
 class Kendaraan {
   String? merk;
   String? tipe;
-  int? harga;
-  
+  int? kecepatan;
 
   //constructor
-  Kendaraan({this.merk, this.tipe, this.harga});
-  
+  Kendaraan({this.merk, this.tipe, this.kecepatan});
+
   //method
-  maju(int kecepatan){
-    print(kecepatan.toString() + " KM/jam");
+  maju(int tambahKecepatan) {
+    kecepatan = kecepatan! + tambahKecepatan;
   }
 }
 
 //inharitance / pewarisan
-class Sedan extends Kendaraan{
+class Sedan extends Kendaraan {
   int? jumlahPintu;
   int? kecepatanMax;
-  
-  Sedan({String? merk, this.jumlahPintu, this.kecepatanMax}):super(merk: merk);
+
+  Sedan({String? merk, this.jumlahPintu, this.kecepatanMax})
+      : super(merk: merk);
 }
 
 void main() {
   //instansiasi
-  var k1 = Kendaraan(merk: "BMW", tipe: "Civic", harga: 50);
+  var k1 = Kendaraan(merk: "BMW", tipe: "Civic", kecepatan: 50);
 
-  k1.maju(60);
+  //  k1.maju(60);
   k1.merk = "Toyota";
   print(k1.merk);
   print(k1.tipe);
-  print(k1.harga);
-  
-  var k2 = Kendaraan(merk: "Mitsubishi", tipe: "Colt", harga: 80);
+  print(k1.kecepatan);
+
+  var k2 = Kendaraan(merk: "Mitsubishi", tipe: "Colt", kecepatan: 80);
 
   k2.maju(40);
   print(k2.merk);
   print(k2.tipe);
-  print(k2.harga);
-  
-  var s1 = Sedan(jumlahPintu: 4,kecepatanMax: 120, merk: "Honda");
+  print(k2.kecepatan);
+
+  var s1 = Sedan(jumlahPintu: 4, kecepatanMax: 120, merk: "Honda");
   print("-----");
   print(s1.jumlahPintu);
   print(s1.kecepatanMax);
