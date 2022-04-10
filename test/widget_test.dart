@@ -202,52 +202,127 @@
 //   print(nilaiakhir);
 // }
 
-//oop
-//class
+// //oop
+// //class
 
-class Kendaraan {
-  String? merk;
-  String? tipe;
-  int? kecepatan;
+// class Kendaraan {
+//   String? merk;
+//   String? tipe;
+//   int? kecepatan;
 
-  //constructor
-  Kendaraan({this.merk, this.tipe, this.kecepatan});
+//   //constructor
+//   Kendaraan({this.merk, this.tipe, this.kecepatan});
 
-  //method
-  maju(int tambahKecepatan) {
-    kecepatan = kecepatan! + tambahKecepatan;
+//   //method
+//   maju(int tambahKecepatan) {
+//     kecepatan = kecepatan! + tambahKecepatan;
+//   }
+// }
+
+// //inharitance / pewarisan
+// class Sedan extends Kendaraan {
+//   int? jumlahPintu;
+//   int? kecepatanMax;
+
+//   Sedan({String? merk, this.jumlahPintu, this.kecepatanMax})
+//       : super(merk: merk);
+// }
+
+// void main() {
+//   //instansiasi
+//   var k1 = Kendaraan(merk: "BMW", tipe: "Civic", kecepatan: 50);
+
+//   //  k1.maju(60);
+//   k1.merk = "Toyota";
+//   print(k1.merk);
+//   print(k1.tipe);
+//   print(k1.kecepatan);
+
+//   var k2 = Kendaraan(merk: "Mitsubishi", tipe: "Colt", kecepatan: 80);
+
+//   k2.maju(40);
+//   print(k2.merk);
+//   print(k2.tipe);
+//   print(k2.kecepatan);
+
+//   var s1 = Sedan(jumlahPintu: 4, kecepatanMax: 120, merk: "Honda");
+//   print("-----");
+//   print(s1.jumlahPintu);
+//   print(s1.kecepatanMax);
+//   print(s1.merk);
+// }
+
+class Sepakbola {
+  String? nama;
+  int? pemain;
+  int? durasi;
+
+  Sepakbola({this.nama, this.pemain, this.durasi});
+}
+
+class Pemain extends Sepakbola {
+  int? cadangan;
+
+  Pemain({int? pemain, this.cadangan}) : super(pemain: pemain);
+}
+
+class Durasi extends Sepakbola {
+  int? babak;
+  int? waterbreak;
+
+  Durasi({this.babak, int? durasi, this.waterbreak})
+      : super(durasi: babak! * 2);
+
+  tambah(int tambahDurasi) {
+    durasi = durasi! + tambahDurasi;
+    print("Dapat diberikan durasi tambahan $tambahDurasi menit");
+    print("Durasi total menjadi $durasi menit");
   }
 }
 
-//inharitance / pewarisan
-class Sedan extends Kendaraan {
-  int? jumlahPintu;
-  int? kecepatanMax;
+class Basket {
+  String? nama;
+  int? pemain;
+  int? durasi;
+  int? babak;
 
-  Sedan({String? merk, this.jumlahPintu, this.kecepatanMax})
-      : super(merk: merk);
+  Basket({this.nama, this.pemain, this.durasi, this.babak});
 }
 
+class Lapangan extends Basket {
+  double? panjang;
+  double? lebar;
+
+  Lapangan({String? nama, this.panjang, this.lebar}) : super(nama: nama);
+}
+
+class DurasiB extends Basket {
+  int? istirahat;
+
+  DurasiB({int? durasi, this.istirahat}) : super(durasi: durasi);
+}
+
+
 void main() {
-  //instansiasi
-  var k1 = Kendaraan(merk: "BMW", tipe: "Civic", kecepatan: 50);
+  var s1 = Sepakbola(nama: "Sepakbola", pemain: 11, durasi: 90);
+  print("Pertandingan ${s1.nama} dimainkan oleh ${s1.pemain} orang dengan durasi ${s1.durasi} menit\n");
 
-  //  k1.maju(60);
-  k1.merk = "Toyota";
-  print(k1.merk);
-  print(k1.tipe);
-  print(k1.kecepatan);
+  var p1 = Pemain(pemain: 11, cadangan: 3);
+  print("Pemain utama berjumlah ${p1.pemain} orang dan cadangan berjumlah ${p1.cadangan} orang\n");
 
-  var k2 = Kendaraan(merk: "Mitsubishi", tipe: "Colt", kecepatan: 80);
+  var d1 = Durasi(babak: 45, waterbreak: 15);
+  print("Pertandingan berdurasi ${d1.durasi} menit");
+  print("Terdapat waterbreak ${d1.waterbreak} menit setelah ${d1.babak} menit berlangsung\n");
+  d1.tambah(30);
 
-  k2.maju(40);
-  print(k2.merk);
-  print(k2.tipe);
-  print(k2.kecepatan);
+  print("---------");
 
-  var s1 = Sedan(jumlahPintu: 4, kecepatanMax: 120, merk: "Honda");
-  print("-----");
-  print(s1.jumlahPintu);
-  print(s1.kecepatanMax);
-  print(s1.merk);
+  var b1 = Basket(nama: "Basketball", pemain: 5, durasi: 10, babak: 4);
+  print("Pertandingan ${b1.nama} dimainkan oleh ${b1.pemain} orang per tim dengan durasi ${b1.babak} x ${b1.durasi} menit\n");
+
+  var db1 = DurasiB(durasi: 10, istirahat: 10);
+  print("Setiap 1 babak (${db1.durasi} menit) berakhir, terdapat waktu istirahat selama ${db1.istirahat} menit\n");
+  
+  var l1 = Lapangan(nama: "Basketball", panjang: 28, lebar: 15);
+  print("Pertandingan ${l1.nama} dilakukan pada lapangan berukuran ${l1.panjang} x ${l1.lebar} meter");
 }
