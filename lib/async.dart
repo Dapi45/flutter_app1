@@ -48,42 +48,36 @@
 void main() async {
   func1();
   await func2();
-  await hit1();
-  await hit2();
-  await hit3();
-  func3();
+  await hit();
+  await hit();
+  await hit();
 }
 
 func1() {
-  print("Loading . . .");
+  print("Please wait");
 }
+
+int nil = 3;
 
 Future func2() {
   return Future.delayed(Duration(seconds: 3), () {
-    print("Pintu akan dibuka dalam 3 detik");
+    
+    print("Pintu akan dibuka dalam \n$nil . . .");
   });
 }
 
-Future hit1() {
+func3() {
+  if(nil > 1){
+    nil = nil - 1;
+    print('$nil . . .');
+  }
+  else{
+    print('Selamat datang');
+  }
+}
+
+Future hit() {
   return Future.delayed(Duration(seconds: 2), () {
-    print("3...");
-  });
-}
-
-Future hit2() {
-  return Future.delayed(Duration(seconds: 1), () {
-    print("2...");
-  });
-}
-
-Future hit3() {
-  return Future.delayed(Duration(seconds: 1), () {
-    print("1...");
-  });
-}
-
-Future func3() {
-  return Future.delayed(Duration(seconds: 1), () {
-    print("Selamat Datang");
+    func3();
   });
 }
